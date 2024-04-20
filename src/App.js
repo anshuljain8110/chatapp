@@ -5,6 +5,7 @@ import Hero from "./pages/Hero";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
 import Chatwall from "./components/chatwall/Chatwall";
+import MessagesLayout from "./components/chatwall/messages/MessagesLayout"
 
 
 const router = createBrowserRouter([
@@ -19,16 +20,26 @@ const router = createBrowserRouter([
       {
         path:"/about",
         element: <About/>
-      },
-      {
-        path:"/chatwall",
-        element:<Chatwall/>
       }
     ]
   },
   {
     path: "/signin",
     element: (<Signin/>)
+  },
+  {
+    path:"/chatwall",
+    element: <Chatwall/>,
+    children:[
+      {
+        index:true,
+        element:"hi"
+      },
+      {
+        path:"/chatwall/:id",
+        element:<MessagesLayout/>
+      }
+    ]
   }
 ])
 

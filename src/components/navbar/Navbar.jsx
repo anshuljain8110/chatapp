@@ -6,7 +6,7 @@ import { signOut } from "firebase/auth";
 export default function Navbar() {
   const firebase = useFirebase();
   const location = useLocation();
-  console.log(firebase.userData)
+  console.log(firebase.userData);
   return (
     <nav
       className={`bg-white sticky w-full z-20 top-0 start-0 border-b border-gray-200 ${
@@ -34,26 +34,22 @@ export default function Navbar() {
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           {firebase.loggedIn && (
             <div className="flex h-12">
-              {firebase.userData.photoURL !== undefined ? (
-                <img
-                  className="rounded-full border border-gray-100 shadow-sm m-1"
-                  src={
-                    firebase.userData.photoURL != null
-                      ? firebase.userData.photoURL
-                      : "https://media.istockphoto.com/id/1209654046/vector/user-avatar-profile-icon-black-vector-illustration.jpg?s=612x612&w=0&k=20&c=EOYXACjtZmZQ5IsZ0UUp1iNmZ9q2xl1BD1VvN6tZ2UI="
-                  }
-                  alt="dfver"
-                />
-              ) : (
-                ""
+              {firebase.loggedIn && (
+                <div className="flex justify-center align-center">
+                  <img
+                    src={firebase.userData.photoURL}
+                    className="rounded-full border border-gray-100 shadow-sm"
+                    alt="You Here"
+                  />
+                  <button
+                    onClick={() => signOut(firebase.auth)}
+                    type="button"
+                    className="m-1 mx-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Log Out
+                  </button>
+                </div>
               )}
-              <button
-                onClick={() => signOut(firebase.auth)}
-                type="button"
-                className="m-1 mx-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Log Out
-              </button>
             </div>
           )}
           {!firebase.loggedIn && (
@@ -64,7 +60,7 @@ export default function Navbar() {
               Sign In
             </Link>
           )}
-{/* toggle theme button here */}
+          {/* toggle theme button here */}
           <label className="inline-flex items-center cursor-pointer rotate-90">
             <input
               type="checkbox"
@@ -84,7 +80,7 @@ export default function Navbar() {
               className="sr-only peer"
               defaultChecked={firebase.theme ? "true" : ""}
             />
-            <div className="relative w-7 h-4 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>            
+            <div className="relative w-7 h-4 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
           </label>
 
           <button
