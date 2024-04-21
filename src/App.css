@@ -1,0 +1,24 @@
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #fff;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #00368d;
+    border-radius: 5px;
+  }
+  
+  ::-moz-selection { 
+    color: white;
+    background: rgb(59 130 246 / var(--tw-text-opacity));
+  }
+  
+  ::selection {
+    color: white;
+    background: rgb(235, 204, 146);;
+  }

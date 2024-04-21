@@ -3,7 +3,6 @@ import { useFirebase } from "../../../context/Firebase";
 import {
   collection,
   onSnapshot,
-  orderBy,
   query,
   where,
 } from "firebase/firestore";
@@ -64,9 +63,9 @@ export default function RecentConversations() {
             </div>
             {conversations.updatedAt!==null && (
               <div>
-                {/* {String(e.updatedAt.toDate().getHours())}:
-                {String(e.updatedAt.toDate().getMinutes())} */}
-                {e.updatedAt.seconds}
+                {String(e.updatedAt.toDate().getHours())}:
+                {String(e.updatedAt.toDate().getMinutes())}
+                {/* {e.updatedAt.seconds} */}
               </div>
             )}
           </Link>

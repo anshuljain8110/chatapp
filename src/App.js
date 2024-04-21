@@ -6,7 +6,7 @@ import Home from "./components/home/Home";
 import About from "./components/about/About";
 import Chatwall from "./components/chatwall/Chatwall";
 import MessagesLayout from "./components/chatwall/messages/MessagesLayout"
-
+import "./App.css"
 
 const router = createBrowserRouter([
   {

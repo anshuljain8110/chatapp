@@ -13,3 +13,12 @@
   color-scheme: light;
   /* border: 1px solid red; */
 }
+
+.hovereffect2{
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hovereffect2:hover{
+  opacity: 1;
+}
