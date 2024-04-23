@@ -9,20 +9,21 @@ export default function Signin() {
   const setTheme = firebase.checkTheme
   
   return (
-    <section className={`bg-gray-50 ${setTheme("dark:bg-gray-900")}`}>
-      {firebase.loggedIn && (<Navigate to="/" replace="true"/>)}
+    <section className={`bg-gray-50 ${firebase.theme?"dark:bg-gray-900":""}`}>
+      {firebase.loggedIn && (<Navigate to="/"/>)}
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <p className={`flex items-center mb-6 text-2xl font-semibold text-gray-900 ${setTheme("dark:text-white")} `}>
-          <img
-            className="w-8 h-8 mr-2"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-            alt="logo"
-          />
-          Flowbite
+        <p className={`flex items-center mb-6 text-2xl font-semibold text-gray-900 ${firebase.theme?"dark:text-white":""} `}>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 mx-2" viewBox="0 0 512 512">
+  <path
+  fill={firebase.theme?"#ffffff":""}
+    d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"
+  />
+</svg>
+          ChatPlane
         </p>
-        <div className={`w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ${setTheme("dark:bg-gray-800 dark:border-gray-700")} `}>
+        <div className={`w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ${firebase.theme?"dark:bg-gray-800 dark:border-gray-700":""} `}>
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className={`text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ${setTheme("dark:text-white")}`}>
+            <h1 className={`text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ${firebase.theme?"dark:text-white":""}`}>
               Sign in to your account
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={(e)=>{
@@ -32,7 +33,7 @@ export default function Signin() {
               <div>
                 <label
                   htmlFor="email"
-                  className={`block mb-2 text-sm font-medium text-gray-900 ${setTheme("dark:text-white")}`}
+                  className={`block mb-2 text-sm font-medium text-gray-900 ${firebase.theme?"dark:text-white":""}`}
                 >
                   Your email
                 </label>
@@ -40,7 +41,7 @@ export default function Signin() {
                   type="email"
                   name="email"
                   id="email"
-                  className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ${setTheme("dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500")} `}
+                  className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ${firebase.theme?"dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500":""} `}
                   placeholder="yourname@email.com"
                   required=""
                   value={email}
@@ -50,7 +51,7 @@ export default function Signin() {
               <div>
                 <label
                   htmlFor="password"
-                  className={`block mb-2 text-sm font-medium text-gray-900 ${setTheme("dark:text-white")} `}
+                  className={`block mb-2 text-sm font-medium text-gray-900 ${firebase.theme?"dark:text-white":""} `}
                 >
                   Password
                 </label>
@@ -59,7 +60,7 @@ export default function Signin() {
                   name="password"
                   id="password"
                   placeholder="••••••••"
-                  className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ${setTheme("dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500")}`}
+                  className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ${firebase.theme?"dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500":""}`}
                   required=""
                   value={password}
                   onChange={(e)=>{setPassword(e.target.value)}}
@@ -68,7 +69,7 @@ export default function Signin() {
 
               <button
                 type="submit"
-                className={` bg-blue-900 w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ${setTheme("dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800")}`}
+                className={` bg-blue-900 w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ${firebase.theme?"dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800":""}`}
               >
                 Sign in
               </button>

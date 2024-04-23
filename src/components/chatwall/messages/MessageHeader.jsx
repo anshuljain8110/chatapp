@@ -31,8 +31,8 @@ export default function MessageHeader(props) {
   console.log(headerData);
   return (
     <div
-      className={`bg-gray-200 flex items-center px-8 py-4 ${
-        firebase.theme ? "dark:bg-gray-900 dark:border-gray-600" : ""
+      className={`bg-gray-200 flex items-center px-8 py-4 border-2 ${
+        firebase.theme ? "dark:bg-gray-900 dark:border-blue-500" : "border-white"
       }`}
       style={{ justifyContent: "space-between" }}
     >
@@ -42,7 +42,10 @@ export default function MessageHeader(props) {
           src={headerData.img}
           alt="dfr"
         />
+        <div>
         <h2 className={`text-3xl font-semibold ${firebase.theme?"text-blue-500":""}`}>{headerData.name}</h2>
+        <p className={`text-xs ${firebase.theme?"text-blue-500":""}`}>{headerData.lastSeen}</p>
+        </div>
       </div>
       <Link className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" to="/chatwall/">Close</Link>
     </div>

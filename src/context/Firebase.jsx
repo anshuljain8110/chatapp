@@ -7,7 +7,7 @@ import {
     signInWithPopup,
     onAuthStateChanged,
 } from "firebase/auth";
-import { doc, getDoc, getFirestore, serverTimestamp, setDoc } from "firebase/firestore";
+import { addDoc, doc, getDoc, getFirestore, serverTimestamp, setDoc } from "firebase/firestore";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -64,20 +64,27 @@ export const FirebaseProvider = (props) => {
         }
     };
     const signUpWithGoogle = async () => {
-        await signInWithPopup(auth, googleProvider)
-        const userCollection = collection(db, "users")
-        const docRef = doc(db, "users", userData.uid)
-        const docSnap = await getDoc(docRef)
-        if (!docSnap.exists()) {
-            await setDoc(doc(userCollection, userData.uid), {
-                name: userData.displayName,
-                id: userData.uid,
-                img: userData.photoURL,
-                email: userData.email
-            })
+        try {
+          // Sign in with Google authentication
+          const userCredential = await signInWithPopup(auth, new GoogleAuthProvider());
+          const user = userCredential.user;
+      
+          // Add user data to Firestore
+          const userCollection = doc(db, "users", user.uid);
+          await setDoc(userCollection, {
+            name: user.displayName,
+            id: user.uid,
+            img: user.photoURL,
+            email: user.email,
+            userSince: user.metadata.creationTime,
+            lastSeen: user.metadata.lastSignInTime
+          });
+      
+          console.log("User signed up with Google successfully.");
+        } catch (error) {
+          console.error("Error signing up with Google:", error.message);
         }
-    };
-
+      };
 
 
     const findUser = async (searchInput, setSearchResults) => {
@@ -110,22 +117,10 @@ export const FirebaseProvider = (props) => {
         const document1 = {sender: user1.id,reciver: user2.id,reciverimg: user2.img,status: "unopened",name: user2.name,updatedAt:serverTimestamp(),lastMessage:"Nothing To Show Here"}
         const document2 = {sender: user2.id,reciver: user1.id,reciverimg: user1.img,status: "unopened",name: user1.name,updatedAt:serverTimestamp(),lastMessage:"Nothing To Show Here"}
 
-        await setDoc(doc(conversationsCollection, String(user1.id)+String(user2.id)), document1)
-        await setDoc(doc(conversationsCollection, String(user2.id)+String(user1.id)), document2)
+        await setDoc(doc(conversationsCollection, String(user1.id)+"-"+String(user2.id)), document1)
+        await setDoc(doc(conversationsCollection, String(user2.id)+"-"+String(user1.id)), document2)
 
         console.log("first")
-    }
-
-    const fetchConversations = async() =>{
-        const usersCollection = collection(db, "conversations");
-        const q = query(usersCollection, where("id1", "==", userData.uid), where("id2", "==", userData.uid));
-        const querySnapshot = await getDocs(q);
-        const results = [];
-        querySnapshot.forEach((doc) => {
-            const userData = doc.data();
-            results.push(userData);
-        });
-        console.log(results)
     }
 
 

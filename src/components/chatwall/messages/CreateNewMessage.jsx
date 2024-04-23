@@ -4,6 +4,8 @@ import {
   doc,
   getDoc,
   serverTimestamp,
+  setDoc,
+  updateDoc,
 } from "firebase/firestore";
 import React, { useRef, useState } from "react";
 import { useFirebase } from "../../../context/Firebase";
@@ -39,33 +41,41 @@ export default function CreateNewMessage(props) {
     e.preventDefault();
     console.log("first");
     if (message.length === 0 && imageHEXCode.length === 0) {
-      return 0;
+      return;
     }
+  
     try {
       const conversationRef = doc(
         firebase.db,
         "conversations",
-        String(firebase.userData.uid) + String(id)
+        `${firebase.userData.uid}-${id}`
       );
       const conversationSnapshot = await getDoc(conversationRef);
+      
       if (!conversationSnapshot.exists()) {
         firebase.createConversation(firebase.userData.uid, id);
       }
+  
       const messagesRef = collection(firebase.db, "messages");
       let arr = [firebase.userData.uid, id];
       arr.sort();
       await addDoc(messagesRef, {
-        conversationId: String(arr[0]) + String(arr[1]),
+        conversationId: `${arr[0]}${arr[1]}`,
         senderId: firebase.userData.uid,
         recipientId: id,
         content: messageType === "text" ? message : imageHEXCode,
         messageType: messageType,
         timestamp: serverTimestamp(),
       });
+  
+      // Update conversation status
+      const conversationUpdateRef = doc(firebase.db, "conversations", `${id}-${firebase.userData.uid}`);
+      await updateDoc(conversationUpdateRef, { lastMessage: message, status: "unopened", updatedAt: serverTimestamp() });
+  
       setMessage("");
       setImageHEXCode("");
     } catch (error) {
-      console.log(error.message);
+      console.log("Error creating new message:", error.message);
     }
   };
 
@@ -73,8 +83,8 @@ export default function CreateNewMessage(props) {
     <>
       {imageHEXCode.length===0 ? (
         <form
-          className={`bg-gray-200 p-4 flex ${
-            firebase.theme ? "dark:bg-gray-900 dark:border-gray-600" : ""
+          className={`bg-gray-200 p-4 flex border-2 ${
+            firebase.theme ? "dark:bg-gray-900 dark:border-blue-500" : "border-white"
           }`}
           onSubmit={(e) => {
             createNewMessage(e);
@@ -130,10 +140,9 @@ export default function CreateNewMessage(props) {
           )}
         </form>
       ) : (
-        <div className="absolute bottom-0 bg-gray-900 text-white p-2 rounded m-4">
+        <div className={`absolute bottom-0 text-white p-2 rounded m-4 border-2 ${firebase.theme?"border-blue-500 bg-gray-900":"border-gray-200 bg-gray-400"}`}>
           <form onSubmit={(e) => { createNewMessage(e, "image"); }}>
-            {console.log(imageHEXCode)}
-            <img src={imageHEXCode} alt="Uploaded" className="h-60" />
+            <img src={imageHEXCode} alt="Uploaded" className="h-60 rounded" />
             <button type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5  my-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" onClick={() => { setImageHEXCode(""); }}>Cancel</button>
             <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Send</button>
           </form>

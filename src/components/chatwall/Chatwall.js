@@ -10,7 +10,7 @@ export default function Chatwall() {
     <div className="grid grid-cols-4 h-screen">
       {/* protected the chatwall route */}
       {!firebase.loggedIn && <Navigate to="/signin" />}
-      <div className="bg-gray-200 col-span-1">
+      <div className="bg-gray-300 col-span-1">
         {firebase.loggedIn && <ConversationsLayout />}
       </div>
       <div className="bg-gray-300 col-span-3">

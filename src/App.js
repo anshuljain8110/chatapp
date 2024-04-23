@@ -7,6 +7,7 @@ import About from "./components/about/About";
 import Chatwall from "./components/chatwall/Chatwall";
 import MessagesLayout from "./components/chatwall/messages/MessagesLayout"
 import "./App.css"
+import ChatwallHome from "./components/chatwall/ChatwallHome";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
     children:[
       {
         index:true,
-        element:"hi"
+        element:<ChatwallHome/>
       },
       {
         path:"/chatwall/:id",

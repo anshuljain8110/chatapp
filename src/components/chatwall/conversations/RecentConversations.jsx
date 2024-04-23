@@ -31,22 +31,13 @@ export default function RecentConversations() {
   }, [firebase.db, firebase.userData.uid]);
   console.log(conversations)
   return (
-    <div>
+    <div className="mt-2">
       Recent Conversations
-      <button
-        onClick={() => {
-          firebase.createConversation(
-            "1jigezMZ7lU1aIAybylRMz4jUmt2",
-            firebase.userData.uid
-          );
-        }}
-      >
-        eve
-      </button>
       {conversations.map((e) => {
         return (
+          <>
           <Link
-            className="p-2 flex items-center"
+            className={`flex items-center ${firebase.theme?" hover:bg-gray-800 ":" hover:bg-gray-400 "}  p-2 rounded-xl`}
             style={{ justifyContent: "space-between" }}
             to={e.reciver}
           >
@@ -61,14 +52,15 @@ export default function RecentConversations() {
                 <p className="text-sm	">{e.lastMessage.slice(0, 20)}...</p>
               </div>
             </div>
-            {conversations.updatedAt!==null && (
-              <div>
+            {e.updatedAt!==null && (
+              <p>
                 {String(e.updatedAt.toDate().getHours())}:
-                {String(e.updatedAt.toDate().getMinutes())}
-                {/* {e.updatedAt.seconds} */}
-              </div>
+                {e.updatedAt.toDate().getMinutes()}
+              </p>
             )}
           </Link>
+          <hr />
+          </>
         );
       })}
     </div>
