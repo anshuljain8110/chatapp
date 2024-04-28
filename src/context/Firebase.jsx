@@ -7,7 +7,7 @@ import {
     signInWithPopup,
     onAuthStateChanged,
 } from "firebase/auth";
-import { addDoc, doc, getDoc, getFirestore, serverTimestamp, setDoc } from "firebase/firestore";
+import { doc, getDoc, getFirestore, serverTimestamp, setDoc } from "firebase/firestore";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -22,7 +22,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth();
 const firebaseAuth = getAuth(firebaseApp);
 const firebaseContext = createContext(null);
-const googleProvider = new GoogleAuthProvider();
+// const googleProvider = new GoogleAuthProvider();
 const db = getFirestore(firebaseApp);
 export const useFirebase = () => useContext(firebaseContext);
 

@@ -1,10 +1,8 @@
 import {
   collection,
-  doc,
   onSnapshot,
   orderBy,
   query,
-  updateDoc,
   where,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
@@ -18,10 +16,10 @@ export default function MainChatDisplay(props) {
   const { id, userImage } = props;
   // const [play] = useSound(boopSfx);
 
-  const updateConversationStatus = async () => {
-    const conversationUpdateRef = doc(firebase.db, "conversations", `${id}-${firebase.userData.uid}`);
-    await updateDoc(conversationUpdateRef, { status: "opened" });
-  };
+  // const updateConversationStatus = async () => {
+  //   const conversationUpdateRef = doc(firebase.db, "conversations", `${id}-${firebase.userData.uid}`);
+  //   await updateDoc(conversationUpdateRef, { status: "opened" });
+  // };
 
   useEffect(() => {
     const fetchChats = () => {

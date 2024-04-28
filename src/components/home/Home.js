@@ -69,7 +69,7 @@ export default function Home() {
         </p>
         <Link
           onClick={()=>{window.scrollTo(0,0)}}
-          to="/about"
+          to="/chatapp/about"
           className="mt-4 p-4 bg-blue-700 rounded-full text-white hover:bg-blue-800 font-semibold"
         >
           Learn More

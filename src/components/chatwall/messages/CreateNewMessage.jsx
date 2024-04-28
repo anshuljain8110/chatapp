@@ -4,7 +4,6 @@ import {
   doc,
   getDoc,
   serverTimestamp,
-  setDoc,
   updateDoc,
 } from "firebase/firestore";
 import React, { useRef, useState } from "react";

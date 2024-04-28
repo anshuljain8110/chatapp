@@ -10,7 +10,7 @@ export default function Signin() {
   
   return (
     <section className={`bg-gray-50 ${firebase.theme?"dark:bg-gray-900":""}`}>
-      {firebase.loggedIn && (<Navigate to="/"/>)}
+      {firebase.loggedIn && (<Navigate to="/chatwall"/>)}
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <p className={`flex items-center mb-6 text-2xl font-semibold text-gray-900 ${firebase.theme?"dark:text-white":""} `}>
         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 mx-2" viewBox="0 0 512 512">
