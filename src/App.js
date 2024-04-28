@@ -11,7 +11,7 @@ import ChatwallHome from "./components/chatwall/ChatwallHome";
 
 const router = createBrowserRouter([
   {
-    path: "/chatapp/",
+    path: "/chatapp",
     element: (<Hero/>),
     children: [
       {
@@ -19,17 +19,17 @@ const router = createBrowserRouter([
         element: <Home/>
       },
       {
-        path:"/chatapp/about",
+        path:"/about",
         element: <About/>
       }
     ]
   },
   {
-    path: "/chatapp/signin",
+    path: "/signin",
     element: (<Signin/>)
   },
   {
-    path:"/chatapp/chatwall",
+    path:"/chatwall",
     element: <Chatwall/>,
     children:[
       {
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         element:<ChatwallHome/>
       },
       {
-        path:"/chatapp/chatwall/:id",
+        path:"/chatwall/:id",
         element:<MessagesLayout/>
       }
     ]
