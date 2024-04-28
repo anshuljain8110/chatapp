@@ -116,7 +116,8 @@ export default function Navbar() {
             }`}
           >
             <li>
-              <Link
+              <Link 
+                onClick={()=>{window.scrollTo(0,0)}}
                 to="/"
                 className={`block py-2 px-3 rounded md:p-0 ${
                   location.pathname === "/"
@@ -134,6 +135,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link
+                onClick={()=>{window.scrollTo(0,0)}}
                 to="/about"
                 className={`block py-2 px-3 rounded md:p-0 ${
                   location.pathname === "/about"
