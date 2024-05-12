@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/chatapp/static/css/main.1f968652.css",
-    "main.js": "/chatapp/static/js/main.2b57bb23.js",
+    "main.css": "/chatapp/static/css/main.561737c7.css",
+    "main.js": "/chatapp/static/js/main.6cf1809f.js",
     "static/js/453.ac0634c6.chunk.js": "/chatapp/static/js/453.ac0634c6.chunk.js",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/chatapp/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/fontawesome-webfont.eot": "/chatapp/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
@@ -9,12 +9,12 @@
     "static/media/fontawesome-webfont.woff?v=4.7.0": "/chatapp/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/chatapp/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "index.html": "/chatapp/index.html",
-    "main.1f968652.css.map": "/chatapp/static/css/main.1f968652.css.map",
-    "main.2b57bb23.js.map": "/chatapp/static/js/main.2b57bb23.js.map",
+    "main.561737c7.css.map": "/chatapp/static/css/main.561737c7.css.map",
+    "main.6cf1809f.js.map": "/chatapp/static/js/main.6cf1809f.js.map",
     "453.ac0634c6.chunk.js.map": "/chatapp/static/js/453.ac0634c6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1f968652.css",
-    "static/js/main.2b57bb23.js"
+    "static/css/main.561737c7.css",
+    "static/js/main.6cf1809f.js"
   ]
 }
