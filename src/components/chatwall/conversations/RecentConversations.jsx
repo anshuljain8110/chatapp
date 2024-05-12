@@ -3,6 +3,7 @@ import { useFirebase } from "../../../context/Firebase";
 import {
   collection,
   onSnapshot,
+  orderBy,
   query,
   where,
 } from "firebase/firestore";
@@ -15,7 +16,8 @@ export default function RecentConversations() {
     const fetchData = async () => {
       const q1 = query(
         collection(firebase.db, "conversations"),
-        where("sender", "==", firebase.userData.uid)
+        where("sender", "==", firebase.userData.uid),
+        orderBy("updatedAt","desc")
       );
       const unsubscribe = onSnapshot(q1, (snapshot) => {
         const newData = snapshot.docs.map((doc) => ({
@@ -40,6 +42,7 @@ export default function RecentConversations() {
             className={`flex items-center ${firebase.theme?" hover:bg-gray-800 ":" hover:bg-gray-400 "}  p-2 rounded-xl`}
             style={{ justifyContent: "space-between" }}
             to={e.reciver}
+            replace={true}
           >
             <div className="flex gap-3">
               <img

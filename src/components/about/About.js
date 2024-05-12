@@ -7,9 +7,9 @@ export default function About() {
 
     {name:"Arpit Manchanda",position:"Logistics",image:"https://res.cloudinary.com/dtws0vjlb/image/upload/v1689062625/avtars/u0z9gqq7t3uc5hr5gmnu.png",connect:"https://www.linkedin.com/in/arpit-manchanda-85638225a/"},
 
-    {name:"Anushka Gupta",position:"Frontend",image:"https://res.cloudinary.com/dtws0vjlb/image/upload/v1689062624/avtars/hqlqjqtqf2q2wwh2zfsk.png",connect:"https://www.linkedin.com/in/anushka-gupta-562673260/"},
+    {name:"Anushka Gupta",position:"Frontend",image:"https://res.cloudinary.com/dtws0vjlb/image/upload/v1689062626/avtars/xpsbmt8qmcachkch9grk.png",connect:"https://www.linkedin.com/in/anushka-gupta-562673260/"},
 
-    {name:"Apoorva",position:"Designer",image:"https://res.cloudinary.com/dtws0vjlb/image/upload/v1689062627/avtars/il468jeh3vqcp2omotye.png",connect:"https://www.linkedin.com/in/anshuljain8110/"},
+    {name:"Apoorva",position:"Designer",image:"https://res.cloudinary.com/dtws0vjlb/image/upload/v1689062626/avtars/vvs3zcuzl0dfbqo2cw17.png",connect:"https://www.linkedin.com/in/anshuljain8110/"},
   ]
 
   const arr2 = [

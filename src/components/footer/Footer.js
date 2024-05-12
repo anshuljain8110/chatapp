@@ -16,7 +16,7 @@ export default function Footer() {
             </a>
             <ul className={`flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 ${firebase.theme?"dark:text-gray-400":""}`}>
                 <li>
-                    <Link to="/about" className="hover:underline me-4 md:me-6">About Us</Link>
+                    <Link to="/chatapp/about" className="hover:underline me-4 md:me-6">About Us</Link>
                 </li>
                 <li>
                     <Link to="/chatwall" className="hover:underline me-4 md:me-6">Chat Now</Link>
