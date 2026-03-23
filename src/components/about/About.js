@@ -94,7 +94,7 @@ export default function About() {
 
 
 
-      <section className="flex flex-col items-center justify-center p-32 relative bg-blue-600">
+      {/* <section className="flex flex-col items-center justify-center p-32 relative bg-blue-600">
         <h2 className="text-3xl font-semibold text-white mb-8">Our <span className="text-red-400">Team</span> 😁</h2>
         <div className="grid grid-cols-4 gap-16">
           {arr.map((e)=>{
@@ -123,7 +123,7 @@ export default function About() {
             ></path>
           </svg>
         </div>
-      </section>
+      </section> */}
 
 
 
